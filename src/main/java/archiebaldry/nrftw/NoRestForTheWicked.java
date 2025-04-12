@@ -22,7 +22,7 @@ public class NoRestForTheWicked implements ModInitializer {
 
 	@Override
 	public void onInitialize() {
-		LOGGER.info("Hello Fabric world!");
+		LOGGER.info("Hello, World!");
 
 		UseBlockCallback.EVENT.register(((player, world, hand, hitResult) -> {
 			if (!world.isClient) {
