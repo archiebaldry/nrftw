@@ -2,13 +2,16 @@ package archiebaldry.nrftw;
 
 import net.fabricmc.api.ModInitializer;
 
+import net.fabricmc.fabric.api.event.lifecycle.v1.ServerLifecycleEvents;
 import net.fabricmc.fabric.api.event.player.UseBlockCallback;
 import net.minecraft.block.BedBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
+import net.minecraft.server.world.ServerWorld;
 import net.minecraft.text.Text;
 import net.minecraft.util.ActionResult;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.world.GameRules;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -38,5 +41,11 @@ public class NoRestForTheWicked implements ModInitializer {
 
 			return ActionResult.PASS;
 		}));
+
+		ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
+			for (ServerWorld world : server.getWorlds()) {
+				world.getGameRules().get(GameRules.DO_INSOMNIA).set(false, server);
+			}
+		});
 	}
 }
