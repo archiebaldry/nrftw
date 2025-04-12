@@ -35,6 +35,8 @@ public class NoRestForTheWicked implements ModInitializer {
 				if (block instanceof BedBlock) {
 					player.sendMessage(Text.literal("There ain't no rest for the wicked"), true);
 
+					LOGGER.info("{} tried to use a bed but there ain't no rest for the wicked.", player.getName().getLiteralString());
+
 					return ActionResult.SUCCESS;
 				}
 			}
@@ -45,6 +47,8 @@ public class NoRestForTheWicked implements ModInitializer {
 		ServerLifecycleEvents.SERVER_STARTED.register((server) -> {
 			for (ServerWorld world : server.getWorlds()) {
 				world.getGameRules().get(GameRules.DO_INSOMNIA).set(false, server);
+
+				LOGGER.info("Disabled insomnia in {}.", world);
 			}
 		});
 	}
