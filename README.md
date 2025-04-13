@@ -4,4 +4,5 @@ A Fabric mod that removes the player's ability to sleep in a bed. I was inspired
 - Players can no longer skip the night
 - Players can no longer set their spawnpoint in the Overworld (Respawn Anchors can still be used in the Nether)
 - Phantoms will no longer spawn by default (they can be temporarily re-enabled by setting the doInsomnia gamerule to True)
+- Drowned have a 25% chance of dropping phantom membranes when killed by a player
 - Beds will no longer explode in the Nether or the End
